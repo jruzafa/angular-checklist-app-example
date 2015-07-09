@@ -32,7 +32,8 @@
                 <h1 class="title">ChecklistApp</h1>
                 <nav>
                     <ul>
-                        <li><a href="#">nav ul li a</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Home</a></li>
                     </ul>
                 </nav>
             </header>
@@ -43,11 +44,11 @@
 
 
 
-                <aside>
+           <!--      <aside>
                     <h3>aside</h3>
                     <p>templates</p>
                 </aside>
-
+ -->
                 <article>   
                         Search: <input ng-model="query">
 
@@ -61,8 +62,8 @@
 
 
                         </ul>   
-
-                        <input type="button" ng-click="addTask();" name="add task" value="add task" />
+                        <input type="text" name="new_task" value="New task..." tabindex="4" ng-model="newtask" ng-keypress="">
+                        <input type="button" ng-click="addTask();" name="add task" value="add task" tabindex="5" />
 
                 </article>          
 
@@ -71,7 +72,7 @@
 
         <div class="footer-container">
             <footer class="wrapper">
-                <h3>footer</h3>
+                <h3>&copy; 2015 - Devopensource</h3>
             </footer>
         </div>
 

@@ -6,9 +6,15 @@ function TaskController ($scope, $http){
 		$scope.tasks = data;
   });
 
-  $scope.addTask = function( ){
-
-  	console.log('añadir task');
+  $scope.addTask = function(  ){
+  	
+  	console.log($scope.newtask);
+  		$scope.tasks.push([
+			{
+				"name": $scope.newtask,
+				"status":0
+			}
+  		]);
   }
 
 }

@@ -43,6 +43,43 @@ if($_GET['action'] == 'read'){
 
 
 
+/*
+** Do a insert query:
+*/
+ 
+// // create SQL query:
+// $sql = "INSERT INTO logs (timestamp, text) VALUES (NOW(), 'some text here!')";
+ 
+// // execute query:
+// $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+ 
+// // get the new ID of the last insert command
+// $new_id = mysql_insert_id();
+ 
+ 
+ 
+// /*
+// ** Do a update query:
+// */
+ 
+// // create SQL query:
+// $sql = "UPDATE logs SET text='New text!' WHERE id='1'";
+ 
+// // execute query:
+// $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+ 
+ 
+ 
+// /*
+// ** Do a delete query:
+// */
+ 
+// // create SQL query:
+// $sql = "DELETE FROM logs WHERE id='1'";
+ 
+// // execute query:
+// $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
 
 
  ?>
