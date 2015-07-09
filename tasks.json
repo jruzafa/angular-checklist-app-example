@@ -1,0 +1,10 @@
+[
+	{
+		"name": "Clean code",
+		"status": true
+	},
+	{
+		"name": "Deploy in dev",
+		"status": false
+	}
+]
