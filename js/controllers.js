@@ -7,15 +7,26 @@ function TaskController ($scope, $http){
   });
 
   $scope.addTask = function(  ){
-  	
-  	console.log($scope.newtask);
-  		$scope.tasks.push([
-			{
-				"name": $scope.newtask,
-				"status":0
-			}
-  		]);
-  }
+
+	  	console.log($scope.newtask);
+	  	console.log($scope.tasks);
+	  	item = {
+	  		"name": $scope.newtask,
+	  		"status":0
+	  	};
+
+	  	$scope.tasks.push(item);
+
+	  	console.log($scope.tasks);
+
+		$http.post('api.php?action=insert', null,{'params':item}).
+			success(function(data, status, headers, config) {
+				console.log(data);
+				console.log(status);
+				console.log(headers);
+				console.log(config);
+			});
+	}
 
 }
 
