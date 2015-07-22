@@ -18,7 +18,7 @@ mysql_select_db('checklistapp')
 
 if($_GET['action'] == 'read'){
 
-	$sql = "SELECT name, status FROM tasks";
+	$sql = "SELECT name, status,id FROM tasks";
 
 	// execute query:
 	$result = mysql_query($sql)
@@ -34,8 +34,14 @@ if($_GET['action'] == 'read'){
 	while ($row = mysql_fetch_assoc($result)) {
 	    $rowName = $row['name'];
 	    $rowStatus = $row['status'];
+      $rowId = $row['id'];
 
-		$data[] = array('name' => $rowName, 'status' => $rowStatus);
+
+		$data[] = array(
+        'name' => $rowName,
+        'status' => $rowStatus,
+        'id' => $rowId
+    );
 	}
 
 
@@ -67,6 +73,39 @@ if($_GET['action'] == 'insert'){
 	echo json_encode(array('result' => true ,'id' => $new_id));
 }
 
+
+if($_GET['action'] == 'update'){
+
+
+  $status = ($_GET['status'] == 'true') ? 1 : 0;
+
+
+
+//  echo $status;
+
+  $id = $_GET['id'];
+
+  $sql = "UPDATE tasks SET status=".$status." WHERE id = $id";
+
+  // execute query:
+  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
+
+
+  /*
+  ** Do a delete query:
+  */
+
+  // create SQL query:
+  //$sql = "DELETE FROM logs WHERE id='1'";
+
+  // execute query:
+//  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
+  echo json_encode(array('result' => $result ,'id' => $id));
+
+
+}
 
 
 // /*

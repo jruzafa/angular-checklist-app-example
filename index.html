@@ -10,23 +10,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-
-         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/main.js"></script>
-
-       
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
         <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title">ChecklistApp</h1>
@@ -38,44 +32,32 @@
                 </nav>
             </header>
         </div>
-
         <div class="main-container">
             <div class="main wrapper clearfix">
-
-
-
            <!--      <aside>
                     <h3>aside</h3>
                     <p>templates</p>
                 </aside>
  -->
-                <article>   
+                <article>
                         Search: <input ng-model="query">
-
                         <ul>
-
                             <li ng-repeat="task in tasks | filter: query">
-
-                                <input ng-model="task.name" type="text" name="task">
-                                 <input type="checkbox" ng-model="task.status" name="userAgree" ng-checked="{{task.status}}"  />
+                              <input ng-model="task.id" type="hidden" name="taskId" ng-model="task.id">
+                              <input ng-model="task.name" type="text" name="task">
+                              <input type="checkbox" ng-model="task.status" name="userAgree" ng-checked="{{task.status}}" ng-click="updateStatus(task.id, task.status);" />
                             </li>
-
-
-                        </ul>   
+                        </ul>
                         <input type="text" name="new_task" value="New task..." tabindex="4" ng-model="newtask" ng-keypress="">
                         <input type="button" ng-click="addTask();" name="add task" value="add task" tabindex="5" />
-
-                </article>          
-
+                </article>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
-
         <div class="footer-container">
             <footer class="wrapper">
                 <h3>&copy; 2015 - Devopensource</h3>
             </footer>
         </div>
-
         <script src="js/main.js"></script>
     </body>
 </html>
