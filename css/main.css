@@ -371,3 +371,8 @@ nav a:hover {
         page-break-after: avoid;
     }
 }
+
+
+.app-content {
+  margin-top: 20px;
+}

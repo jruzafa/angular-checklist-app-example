@@ -10,8 +10,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="stylesheet" href="css/normalize.min.css">
+        
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="js/controllers.js"></script>
@@ -21,7 +22,7 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="header-container">
+        <!-- <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title">ChecklistApp</h1>
                 <nav>
@@ -31,33 +32,72 @@
                     </ul>
                 </nav>
             </header>
-        </div>
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-           <!--      <aside>
-                    <h3>aside</h3>
-                    <p>templates</p>
-                </aside>
- -->
-                <article>
-                        Search: <input ng-model="query">
-                        <ul>
-                            <li ng-repeat="task in tasks | filter: query">
-                              <input ng-model="task.id" type="hidden" name="taskId" ng-model="task.id">
-                              <input ng-model="task.name" type="text" name="task">
-                              <input type="checkbox" ng-model="task.status" name="userAgree" ng-checked="{{task.status}}" ng-click="updateStatus(task.id, task.status);" />
-                            </li>
-                        </ul>
-                        <input type="text" name="new_task" value="New task..." tabindex="4" ng-model="newtask" ng-keypress="">
-                        <input type="button" ng-click="addTask();" name="add task" value="add task" tabindex="5" />
-                </article>
-            </div> <!-- #main -->
+        </div> -->
+        <div class="main-container container">
+          <div class="app-content">
+          </div>
+          <div class="row">
+
+
+                <div class="col-lg-6">
+                <div class="well bs-component">
+                <form class="form-horizontal">
+                <fieldset>
+                  <legend>Tasks</legend>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">  Search:</label>
+                    <div class="col-lg-10">
+                      <input type="text" ng-model="query" class="form-control" placeholder="Search task...." style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                    </div>
+                  </div>
+                  <div class="form-group"  ng-repeat="task in tasks | filter: query">
+                      <div class="col-lg-8">
+                        <input ng-model="task.id" type="hidden" name="taskId" ng-model="task.id">
+                        <input ng-model="task.name" type="text" name="task" class="form-control" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                      </div>
+                      <div class="col-lg-1">
+                        <input type="checkbox" ng-model="task.status" name="userAgree" ng-checked="{{task.status}}" ng-click="updateStatus(task.id, task.status);" />
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="reset" class="btn btn-default">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </fieldset>
+                </form>
+                </div>
+                </div>
+
+
+                <div class="col-lg-4 col-lg-offset-1">
+                <div class="well bs-component">
+                  <form class="form-horizontal">
+                    <fieldset>
+                      <div class="form-group">
+                          <div class="col-lg-10">
+                            <input type="text" name="new_task"  placeholder="New task..." tabindex="4" ng-model="newtask" ng-keypress="" class="form-control" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-lg-10">
+                          <button type="submit" class="btn btn-primary" ng-click="addTask();" name="add task" value="add task" tabindex="5">Create task</button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+                </div>
+
+            </div> <!-- .row -->
+            </div>
         </div> <!-- #main-container -->
-        <div class="footer-container">
+        <!-- <div class="footer-container">
             <footer class="wrapper">
                 <h3>&copy; 2015 - Devopensource</h3>
             </footer>
-        </div>
+        </div> -->
         <script src="js/main.js"></script>
     </body>
 </html>
