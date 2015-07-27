@@ -51,7 +51,6 @@ if($_GET['action'] == 'read'){
 }
 
 
-
 if($_GET['action'] == 'insert'){
 
 	/*
@@ -108,28 +107,51 @@ if($_GET['action'] == 'update'){
 }
 
 
-// /*
-// ** Do a update query:
-// */
 
-// // create SQL query:
-// $sql = "UPDATE logs SET text='New text!' WHERE id='1'";
+if($_GET['action'] == 'update'){
 
-// // execute query:
-// $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
+  $status = ($_GET['status'] == 'true') ? 1 : 0;
 
 
 
-// /*
-// ** Do a delete query:
-// */
+//  echo $status;
 
-// // create SQL query:
-// $sql = "DELETE FROM logs WHERE id='1'";
+  $id = $_GET['id'];
 
-// // execute query:
-// $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+  $sql = "UPDATE tasks SET status=".$status." WHERE id = $id";
 
+  // execute query:
+  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
 
 
- ?>
+
+  /*
+  ** Do a delete query:
+  */
+
+  // create SQL query:
+  //$sql = "DELETE FROM logs WHERE id='1'";
+
+  // execute query:
+//  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
+  echo json_encode(array('result' => $result ,'id' => $id));
+
+}
+
+
+if($_GET['action'] == 'delete'){
+
+  $id = $_GET['id'];
+
+  $sql = "DELETE FROM tasks WHERE id = $id";
+
+  // execute query:
+  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
+
+  echo json_encode(array('result' => $result ,'id' => $id));
+
+}
+
+?>
