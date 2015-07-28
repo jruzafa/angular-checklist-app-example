@@ -1,20 +1,27 @@
 <?php
 header('Content-Type: application/json');
 
+
+// Variables to connection mysql
+$user = "zend";
+$host = "localhost";
+$password = "";
+$database = "checklistapp";
+
 /*
 ** Connect to database:
 */
 
 // connect to the database
-$con = mysql_connect('localhost','zend','')
+$con = mysql_connect($host, $user, $password)
     or die('Could not connect to the server!');
 
 // select a database:
-mysql_select_db('checklistapp')
+mysql_select_db($database)
     or die('Could not select a database.');
 
 
-// acciones api
+// Actions api
 
 if($_GET['action'] == 'read'){
 
