@@ -1,6 +1,7 @@
 <?php
-header('Content-Type: application/json');
 
+
+header('Content-Type: application/json');
 
 // Variables to connection mysql
 $user = "zend";
@@ -23,6 +24,8 @@ mysql_select_db($database)
 
 // Actions api
 
+
+// read tasks
 if($_GET['action'] == 'read'){
 
 	$sql = "SELECT name, status,id FROM tasks";
@@ -51,13 +54,11 @@ if($_GET['action'] == 'read'){
     );
 	}
 
-
 	echo json_encode($data);
-
 
 }
 
-
+// create new task
 if($_GET['action'] == 'insert'){
 
 	/*
@@ -79,15 +80,11 @@ if($_GET['action'] == 'insert'){
 	echo json_encode(array('result' => true ,'id' => $new_id));
 }
 
-
+// update action
 if($_GET['action'] == 'update'){
 
-
+  // status
   $status = ($_GET['status'] == 'true') ? 1 : 0;
-
-
-
-//  echo $status;
 
   $id = $_GET['id'];
 
@@ -96,33 +93,15 @@ if($_GET['action'] == 'update'){
   // execute query:
   $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
 
-
-
-  /*
-  ** Do a delete query:
-  */
-
-  // create SQL query:
-  //$sql = "DELETE FROM logs WHERE id='1'";
-
-  // execute query:
-//  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
-
   echo json_encode(array('result' => $result ,'id' => $id));
-
 
 }
 
 
-
+// update action, name and status
 if($_GET['action'] == 'update'){
 
-
   $status = ($_GET['status'] == 'true') ? 1 : 0;
-
-
-
-//  echo $status;
 
   $id = $_GET['id'];
 
@@ -131,23 +110,11 @@ if($_GET['action'] == 'update'){
   // execute query:
   $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
 
-
-
-  /*
-  ** Do a delete query:
-  */
-
-  // create SQL query:
-  //$sql = "DELETE FROM logs WHERE id='1'";
-
-  // execute query:
-//  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
-
   echo json_encode(array('result' => $result ,'id' => $id));
 
 }
 
-
+// delete action
 if($_GET['action'] == 'delete'){
 
   $id = $_GET['id'];
