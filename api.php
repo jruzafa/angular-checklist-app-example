@@ -80,24 +80,6 @@ if($_GET['action'] == 'insert'){
 	echo json_encode(array('result' => true ,'id' => $new_id));
 }
 
-// update action
-if($_GET['action'] == 'update'){
-
-  // status
-  $status = ($_GET['status'] == 'true') ? 1 : 0;
-
-  $id = $_GET['id'];
-
-  $sql = "UPDATE tasks SET status=".$status." WHERE id = $id";
-
-  // execute query:
-  $result = mysql_query($sql) or die('A error occured: ' . mysql_error());
-
-  echo json_encode(array('result' => $result ,'id' => $id));
-
-}
-
-
 // update action, name and status
 if($_GET['action'] == 'update'){
 
